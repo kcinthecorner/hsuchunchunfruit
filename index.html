@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORKA — 鮮果直送</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-1: #1a3d2b;
+    --green-2: #2d6a4f;
+    --green-3: #52b788;
+    --green-4: #95d5b2;
+    --green-5: #d8f3dc;
+    --cream: #f7f5f0;
+    --white: #ffffff;
+    --text-dark: #0f2119;
+    --accent: #b5e48c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(247,245,240,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(82,183,136,0.15);
+  }
+
+  .logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--green-1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: var(--green-2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  nav ul a {
+    text-decoration: none;
+    color: var(--green-1);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  nav ul a:hover { opacity: 1; }
+
+  .nav-cta {
+    background: var(--green-1);
+    color: var(--cream) !important;
+    padding: 10px 24px;
+    border-radius: 100px;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    font-size: 14px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--green-2) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-geo {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  .geo-1 {
+    width: 600px; height: 600px;
+    background: var(--green-5);
+    top: -100px; right: -150px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: morphBlob 8s ease-in-out infinite;
+  }
+
+  .geo-2 {
+    width: 200px; height: 200px;
+    background: var(--accent);
+    bottom: 80px; left: 60px;
+    border-radius: 62% 38% 38% 62% / 54% 54% 46% 46%;
+    animation: morphBlob 6s ease-in-out infinite reverse;
+  }
+
+  .geo-3 {
+    width: 80px; height: 80px;
+    background: var(--green-4);
+    top: 200px; left: 40%;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes morphBlob {
+    0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  .hero-left {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-5);
+    border: 1px solid var(--green-4);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green-2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green-3);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.5; }
+  }
+
+  h1 {
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 800;
+    line-height: 1.05;
+    color: var(--green-1);
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  h1 span {
+    color: var(--green-3);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--green-2);
+    opacity: 0.8;
+    max-width: 400px;
+    margin-bottom: 48px;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--green-1);
+    color: var(--cream);
+    padding: 16px 36px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    background: var(--green-2);
+  }
+
+  .btn-secondary {
+    color: var(--green-1);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+  }
+
+  .btn-secondary:hover { gap: 14px; }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .stat-num {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--green-1);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--green-2);
+    opacity: 0.7;
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  .hero-right {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .fruit-showcase {
+    position: relative;
+    width: 380px;
+    height: 380px;
+  }
+
+  .fruit-circle-bg {
+    width: 100%;
+    height: 100%;
+    background: var(--green-2);
+    border-radius: 50%;
+    position: absolute;
+  }
+
+  .fruit-emoji-main {
+    position: absolute;
+    font-size: 140px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -54%);
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 20px 30px rgba(26,61,43,0.3));
+  }
+
+  .fruit-tag {
+    position: absolute;
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 12px 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-1);
+    white-space: nowrap;
+  }
+
+  .tag-1 { top: 20px; right: -30px; }
+  .tag-2 { bottom: 60px; left: -20px; }
+  .tag-3 { bottom: 10px; right: 10px; }
+
+  .tag-icon { font-size: 18px; display: block; margin-bottom: 2px; }
+
+  /* MARQUEE */
+  .marquee-section {
+    background: var(--green-1);
+    padding: 18px 0;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 48px;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-item {
+    color: var(--green-4);
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .marquee-item::after {
+    content: '◆';
+    font-size: 8px;
+    color: var(--green-3);
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* PRODUCTS */
+  .products {
+    padding: 120px 80px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 64px;
+  }
+
+  .section-tag {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-3);
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: var(--green-1);
+    line-height: 1.05;
+  }
+
+  h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--green-3);
+  }
+
+  .view-all {
+    text-decoration: none;
+    color: var(--green-2);
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--green-4);
+  }
+
+  .view-all:hover { gap: 14px; }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    border: 1px solid rgba(82,183,136,0.1);
+  }
+
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(26,61,43,0.12);
+  }
+
+  .product-card:nth-child(2) { margin-top: 32px; }
+  .product-card:nth-child(4) { margin-top: 16px; }
+
+  .card-img {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-img-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.15;
+  }
+
+  .card-img span { position: relative; z-index: 1; }
+
+  .c1 .card-img-bg { background: radial-gradient(circle at 60% 40%, #52b788, transparent); }
+  .c2 .card-img-bg { background: radial-gradient(circle at 40% 60%, #b5e48c, transparent); }
+  .c3 .card-img-bg { background: radial-gradient(circle at 60% 50%, #95d5b2, transparent); }
+  .c4 .card-img-bg { background: radial-gradient(circle at 50% 40%, #d8f3dc, transparent); }
+
+  .card-body { padding: 20px 24px 24px; }
+
+  .card-origin {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--green-3);
+    margin-bottom: 6px;
+  }
+
+  .card-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--green-1);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--green-2);
+    opacity: 0.7;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--green-1);
+    letter-spacing: -0.5px;
+  }
+
+  .card-price span {
+    font-size: 13px;
+    font-weight: 300;
+    opacity: 0.6;
+  }
+
+  .add-btn {
+    width: 40px; height: 40px;
+    background: var(--green-1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cream);
+    font-size: 22px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+  }
+
+  .add-btn:hover {
+    background: var(--green-3);
+    transform: rotate(90deg);
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 120px 80px;
+    background: var(--green-1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-geo {
+    position: absolute;
+    width: 500px; height: 500px;
+    background: rgba(82,183,136,0.08);
+    border-radius: 50%;
+    right: -100px;
+    top: -100px;
+  }
+
+  .about-geo-2 {
+    position: absolute;
+    width: 300px; height: 300px;
+    background: rgba(181,228,140,0.06);
+    border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+    left: -50px;
+    bottom: -50px;
+  }
+
+  .about-left { position: relative; z-index: 1; }
+
+  .about-left .section-tag { color: var(--green-4); }
+
+  .about-left h2 { color: var(--cream); }
+
+  .about-left h2 em { color: var(--green-4); }
+
+  .about-desc {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--green-4);
+    opacity: 0.8;
+    font-weight: 300;
+    margin-top: 24px;
+    margin-bottom: 48px;
+  }
+
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--cream);
+  }
+
+  .feature-icon {
+    width: 44px; height: 44px;
+    background: rgba(82,183,136,0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .feature-text { font-size: 15px; font-weight: 400; opacity: 0.9; }
+
+  .about-right {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .about-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(82,183,136,0.2);
+    border-radius: 20px;
+    padding: 28px;
+    backdrop-filter: blur(10px);
+  }
+
+  .about-card:nth-child(2) { margin-top: 32px; }
+
+  .about-card-icon { font-size: 32px; margin-bottom: 16px; }
+  .about-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .about-card-text {
+    font-size: 13px;
+    color: var(--green-4);
+    opacity: 0.7;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    padding: 120px 80px;
+  }
+
+  .testimonials .section-header { margin-bottom: 64px; }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 36px;
+    border: 1px solid rgba(82,183,136,0.1);
+  }
+
+  .testimonial-card:nth-child(2) { margin-top: 24px; }
+
+  .stars { font-size: 16px; margin-bottom: 20px; letter-spacing: 2px; }
+
+  .testimonial-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--green-1);
+    font-weight: 300;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .author-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background: var(--green-5);
+  }
+
+  .author-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--green-1);
+  }
+
+  .author-loc {
+    font-size: 13px;
+    color: var(--green-3);
+    font-weight: 300;
+  }
+
+  /* CTA BANNER */
+  .cta-banner {
+    margin: 0 80px 120px;
+    background: var(--green-2);
+    border-radius: 32px;
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-geo {
+    position: absolute;
+    right: -80px;
+    top: -80px;
+    width: 400px; height: 400px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .cta-geo-2 {
+    position: absolute;
+    left: 40%;
+    bottom: -60px;
+    width: 200px; height: 200px;
+    background: rgba(181,228,140,0.1);
+    border-radius: 50%;
+  }
+
+  .cta-content { position: relative; z-index: 1; }
+
+  .cta-content h2 {
+    color: var(--cream);
+    font-size: clamp(32px, 4vw, 52px);
+  }
+
+  .cta-content h2 em { color: var(--accent); }
+
+  .cta-content p {
+    color: var(--green-4);
+    font-size: 17px;
+    font-weight: 300;
+    margin-top: 16px;
+    opacity: 0.8;
+  }
+
+  .cta-form {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .cta-input {
+    padding: 16px 24px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    width: 260px;
+    backdrop-filter: blur(10px);
+  }
+
+  .cta-input::placeholder { color: rgba(255,255,255,0.5); }
+
+  .cta-btn {
+    padding: 16px 32px;
+    background: var(--cream);
+    color: var(--green-1);
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: transform 0.2s;
+    white-space: nowrap;
+  }
+
+  .cta-btn:hover { transform: scale(1.03); }
+
+  /* FOOTER */
+  footer {
+    background: var(--green-1);
+    padding: 64px 80px 40px;
+    color: var(--green-4);
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(82,183,136,0.15);
+  }
+
+  .footer-brand .logo { color: var(--cream); margin-bottom: 16px; }
+
+  .footer-brand p {
+    font-size: 14px;
+    color: var(--green-4);
+    opacity: 0.7;
+    max-width: 260px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 80px;
+  }
+
+  .footer-col h4 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col ul li {
+    margin-bottom: 12px;
+  }
+
+  .footer-col ul li a {
+    text-decoration: none;
+    color: var(--green-4);
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .footer-col ul li a:hover { opacity: 1; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    opacity: 0.5;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 1024px) {
+    nav { padding: 18px 32px; }
+    nav ul { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .products { padding: 80px 32px; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .product-card:nth-child(2), .product-card:nth-child(4) { margin-top: 0; }
+    .about { grid-template-columns: 1fr; padding: 80px 32px; }
+    .testimonials { padding: 80px 32px; }
+    .testimonial-grid { grid-template-columns: 1fr; }
+    .testimonial-card:nth-child(2) { margin-top: 0; }
+    .cta-banner { flex-direction: column; margin: 0 32px 80px; padding: 48px; }
+    .cta-form { flex-direction: column; width: 100%; }
+    .cta-input { width: 100%; }
+    footer { padding: 48px 32px 32px; }
+    .footer-top { flex-direction: column; gap: 48px; }
+    .footer-links { flex-direction: column; gap: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-mark">O</div>
+    ORKA
+  </div>
+  <ul>
+    <li><a href="#">商品</a></li>
+    <li><a href="#">產地</a></li>
+    <li><a href="#">訂閱</a></li>
+    <li><a href="#">品牌故事</a></li>
+    <li><a href="#" class="nav-cta">立即訂購</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-geo geo-1"></div>
+  <div class="hero-geo geo-2"></div>
+  <div class="hero-geo geo-3"></div>
+
+  <div class="hero-left">
+    <div class="hero-badge">🌿 產地直送 · 每週新鮮</div>
+
+    <h1>
+      把山林的<br>
+      <span>新鮮甜美</span><br>
+      送到你家
+    </h1>
+
+    <p class="hero-desc">
+      嚴選台灣在地農場精品水果，<br>
+      從採摘到餐桌，24 小時內直送到府。
+    </p>
+
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">探索本季精選</a>
+      <a href="#" class="btn-secondary">了解產地故事 →</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">120+</div>
+        <div class="stat-label">合作農場</div>
+      </div>
+      <div>
+        <div class="stat-num">24h</div>
+        <div class="stat-label">採摘直送</div>
+      </div>
+      <div>
+        <div class="stat-num">98%</div>
+        <div class="stat-label">顧客滿意</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="fruit-showcase">
+      <div class="fruit-circle-bg"></div>
+      <div class="fruit-emoji-main">🍑</div>
+
+      <div class="fruit-tag tag-1">
+        <span class="tag-icon">🌱</span>
+        有機無農藥
+      </div>
+      <div class="fruit-tag tag-2">
+        <span class="tag-icon">🚚</span>
+        隔日到府
+      </div>
+      <div class="fruit-tag tag-3">
+        <span class="tag-icon">⭐</span>
+        4.9 評分
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">台灣南投草莓</span>
+    <span class="marquee-item">屏東愛文芒果</span>
+    <span class="marquee-item">梨山高山水蜜桃</span>
+    <span class="marquee-item">嘉義番茄</span>
+    <span class="marquee-item">東勢蜜柑</span>
+    <span class="marquee-item">玉里西瓜</span>
+    <span class="marquee-item">台灣南投草莓</span>
+    <span class="marquee-item">屏東愛文芒果</span>
+    <span class="marquee-item">梨山高山水蜜桃</span>
+    <span class="marquee-item">嘉義番茄</span>
+    <span class="marquee-item">東勢蜜柑</span>
+    <span class="marquee-item">玉里西瓜</span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">本季精選</div>
+      <h2>當令好果，<br><em>現在最鮮</em></h2>
+    </div>
+    <a href="#" class="view-all">查看全部商品 →</a>
+  </div>
+
+  <div class="product-grid">
+    <div class="product-card c1">
+      <div class="card-img">
+        <div class="card-img-bg"></div>
+        <span>🍓</span>
+      </div>
+      <div class="card-body">
+        <div class="card-origin">南投 · 草莓</div>
+        <div class="card-name">大湖高山草莓</div>
+        <div class="card-desc">甜度 13 度以上，顆顆飽滿，現採當日空運。</div>
+        <div class="card-footer">
+          <div class="card-price">$280 <span>/ 盒</span></div>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card c2">
+      <div class="card-img">
+        <div class="card-img-bg"></div>
+        <span>🥭</span>
+      </div>
+      <div class="card-body">
+        <div class="card-origin">屏東 · 芒果</div>
+        <div class="card-name">愛文芒果禮盒</div>
+        <div class="card-desc">果肉橙黃飽滿，濃郁芒果香，送禮自用兩相宜。</div>
+        <div class="card-footer">
+          <div class="card-price">$480 <span>/ 盒</span></div>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card c3">
+      <div class="card-img">
+        <div class="card-img-bg"></div>
+        <span>🍑</span>
+      </div>
+      <div class="card-body">
+        <div class="card-origin">梨山 · 水蜜桃</div>
+        <div class="card-name">梨山高山蜜桃</div>
+        <div class="card-desc">海拔 2000 公尺，日夜溫差大，甜度自然升。</div>
+        <div class="card-footer">
+          <div class="card-price">$360 <span>/ 盒</span></div>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card c4">
+      <div class="card-img">
+        <div class="card-img-bg"></div>
+        <span>🍈</span>
+      </div>
+      <div class="card-body">
+        <div class="card-origin">東勢 · 蜜柑</div>
+        <div class="card-name">春選砂糖橘</div>
+        <div class="card-desc">果皮薄、汁水多，一口爆甜，小孩最愛。</div>
+        <div class="card-footer">
+          <div class="card-price">$220 <span>/ 盒</span></div>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-geo"></div>
+  <div class="about-geo-2"></div>
+
+  <div class="about-left">
+    <div class="section-tag">我們的承諾</div>
+    <h2>從農場到<br><em>你的餐桌</em></h2>
+    <p class="about-desc">
+      ORKA 與全台 120 家小農合作，
+      每一顆水果都有完整的產地溯源記錄。
+      我們相信，真正的美味來自土地的誠實。
+    </p>
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">🌱</div>
+        <div class="feature-text">100% 無農藥或低農藥種植，安心食用</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📦</div>
+        <div class="feature-text">環保再生材質包裝，守護地球</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔍</div>
+        <div class="feature-text">完整溯源系統，掃碼即知產地故事</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">💚</div>
+        <div class="feature-text">購買即支持在地小農，共創永續農業</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right">
+    <div class="about-card">
+      <div class="about-card-icon">🏔️</div>
+      <div class="about-card-title">高山產地</div>
+      <div class="about-card-text">與海拔 1000 公尺以上農場合作，溫差大、甜度高。</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">⚡</div>
+      <div class="about-card-title">急速冷鏈</div>
+      <div class="about-card-text">採摘後 2 小時內進入冷鏈系統，鮮度完整保留。</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">🎯</div>
+      <div class="about-card-title">嚴格篩選</div>
+      <div class="about-card-text">每批次糖度、重量、外觀三重把關，不合格退回。</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-icon">♻️</div>
+      <div class="about-card-title">永續包裝</div>
+      <div class="about-card-text">100% 可回收材質，低碳物流，為地球盡一份力。</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">顧客好評</div>
+      <h2>他們都說<br><em>好好吃</em></h2>
+    </div>
+  </div>
+
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-text">「草莓甜到不可思議，以前買過好多家，這個真的是我吃過最好吃的。而且包裝很美，直接當禮物送人超有面子！」</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👩</div>
+        <div>
+          <div class="author-name">陳小姐</div>
+          <div class="author-loc">台北 · 訂購 6 個月</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-text">「芒果禮盒送給長輩，他們超開心的。果肉飽滿甜度夠，比超市買的新鮮太多了。以後過節就決定訂這個了！」</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👨</div>
+        <div>
+          <div class="author-name">林先生</div>
+          <div class="author-loc">新竹 · 訂購 3 個月</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="testimonial-text">「週週訂閱方案真的很方便，每週都有驚喜。客服也很好，有一次橘子到貨有幾顆軟掉，馬上補寄給我，超貼心。」</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">👩‍💼</div>
+        <div>
+          <div class="author-name">吳小姐</div>
+          <div class="author-loc">台中 · 訂購 1 年</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-geo"></div>
+  <div class="cta-geo-2"></div>
+  <div class="cta-content">
+    <div class="section-tag" style="color:var(--accent)">限時優惠</div>
+    <h2>首次訂購享<br><em>9 折優惠</em></h2>
+    <p>留下 Email，搶先收到新品上架與限定優惠通知。</p>
+  </div>
+  <div class="cta-form">
+    <input type="email" class="cta-input" placeholder="your@email.com">
+    <button class="cta-btn">立即訂閱</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:16px">
+        <div class="logo-mark">O</div>
+        ORKA
+      </div>
+      <p>把台灣最好的水果，送到每個需要甜蜜的地方。</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>商品</h4>
+        <ul>
+          <li><a href="#">本季精選</a></li>
+          <li><a href="#">禮盒系列</a></li>
+          <li><a href="#">訂閱方案</a></li>
+          <li><a href="#">企業採購</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>關於我們</h4>
+        <ul>
+          <li><a href="#">品牌故事</a></li>
+          <li><a href="#">合作農場</a></li>
+          <li><a href="#">永續承諾</a></li>
+          <li><a href="#">媒體報導</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>客戶服務</h4>
+        <ul>
+          <li><a href="#">常見問題</a></li>
+          <li><a href="#">配送說明</a></li>
+          <li><a href="#">退換貨政策</a></li>
+          <li><a href="#">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ORKA 鮮果直送. All rights reserved.</span>
+    <span>隱私政策 · 服務條款</span>
+  </div>
+</footer>
+
+</body>
+</html>
